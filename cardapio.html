@@ -33,75 +33,83 @@
                 </div>
             </div>
         </nav>
-        </div>
-        </nav>
 
     </header>
+    <div class="container">
+        <main>
+            <div style="position: relative; left: 25em;">
+                <input type="text" style="width: 30em;">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
+            </div>
 
-    <main>
+            <br>
 
-        <form>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <input type="text" style="width: 30em;">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
+        </main>
 
-        </form>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Cardápio</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-        <br>
+                    <form id="itemCadastro">
+                        <div class="modal-body">
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Item</th>
-                    <th scope="col">Preço</th>
-                    <th scope="col">Descrição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                </tr>
-                <tr>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                </tr>
-                <tr>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                </tr>
-            </tbody>
-        </table>
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <div class="sm-10">
+                                    <input type="text" class="form-control" id="nome" placeholder="Nome">
+                                </div>
+                            </div>
 
-    </main>
+                            <div class="mb-3">
+                                <label for="preco" class="form-label">Preço</label>
+                                <div class="sm-10">
+                                    <input type="text" class="form-control" id="preco" placeholder="Preço">
+                                </div>
+                            </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cardápio</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">Descrição</label>
+                                <div class="sm-10">
+                                    <input type="text" class="form-control" id="descricao" placeholder="Descrição">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-
-    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary" style="position: fixed-bottom;">
         <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
             <div class="row">
                 <div class="col-lg-3 mb-3">
@@ -162,7 +170,9 @@
     </footer>
 
 
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="./src/cardapio.js"></script>
 </body>
 
 </html>
