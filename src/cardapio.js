@@ -1,11 +1,10 @@
 let itensCardapio = [
-    {nome: "cafe", preco: "100", descricao: "ta caro"}
+    { nome: "cafe", preco: "100", descricao: "ta caro" }
 ];
 
-for (let itemCardapio of itensCardapio){
-
+const addItemCardapioTable = (itemCardapio) => {
     let itemCardapioTbody = document.getElementById("itensCardapioTbody");
-    
+
     let itemCardapioTr = `<tr>
         <td scope = "row">1</td>
         <td>${itemCardapio.nome}</td>
@@ -14,10 +13,24 @@ for (let itemCardapio of itensCardapio){
     </tr>`;
 
     itemCardapioTbody.insertAdjacentHTML('beforeend', itemCardapioTr);
+};
 
-    console.log(itemCardapioTr);
+let itemCardapio = JSON.parse(localStorage.getItem('itemCardapio'));
 
-}
+for (let itemCardapio of itensCardapio) {
+    addItemCardapioTable(itemCardapio);
+};
+
+const setFormValues = (nome = " ", descricao = " ", preco = " ") => {
+    const myname = document.querySelector("nome");
+    const mydecs = document.querySelector("descricao");
+    const myprec = document.querySelector("preco");
+
+    myname.value = nome;
+    mydecs.value = descricao;
+    myprec.value = preco;
+
+};
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,7 +46,10 @@ const handleSubmit = (event) => {
 
     localStorage.setItem("itemCardapio", JSON.stringify(itensCardapio));
 
-   //$('#cardapioModal').modal('toggle')
+    cardapioForm.reset();
+    setFormValues();
+
+    //$('#cardapioModal').modal('toggle')
 
 };
 
@@ -49,11 +65,11 @@ itemCadastro.onsubmit = handleSubmit;
 //JSON.stringfy()
 
 
-    //let nomeInput = document.getElementById("nome");
-    //let nome = nomeInput.value;
+//let nomeInput = document.getElementById("nome");
+//let nome = nomeInput.value;
 
-    //let precoInput = document.getElementById("preco");
-    //let preco = precoInput.value;
+//let precoInput = document.getElementById("preco");
+//let preco = precoInput.value;
 
-    //let descricaoInput = document.getElementById("descricao");
-    //let descricao = descricaoInput.value;
+//let descricaoInput = document.getElementById("descricao");
+//let descricao = descricaoInput.value;

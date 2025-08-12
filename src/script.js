@@ -1,3 +1,6 @@
+import (preparacaoCard)
+//'./src/cardapio.js';
+
 let itens = [{
         src: './assets/image/Download (1).jpeg',
         titulo: 'Cafe pilão',
