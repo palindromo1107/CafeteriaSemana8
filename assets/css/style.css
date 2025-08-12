@@ -1,30 +1,10 @@
-/* Carrossel: mantém a altura e imagem cobrindo */
-
-.carousel.carousel-item {
+.carousel .carousel-item {
     height: 30em;
 }
 
 .carousel-item img {
-    height: 100%;
-    width: 100%;
+    position: absolute;
     object-fit: cover;
-}
-
-
-/* Corrigir os cards */
-
-.card {
-    width: 100%;
-    /* ou remova completamente esta regra */
-}
-
-
-/* Layout geral: não force flex no body */
-
-body {
-    /* Remova o display flex, a não ser que tenha um motivo claro */
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-color: #f8f9fa;
+    top: 0;
+    left: 0;
 }
