@@ -1,75 +1,60 @@
-let itensCardapio = [
-    { nome: "cafe", preco: "100", descricao: "ta caro" }
-];
-
 const addItemCardapioTable = (itemCardapio) => {
-    let itemCardapioTbody = document.getElementById("itensCardapioTbody");
+  let itensCardapioTBody = document.getElementById('itensCardapioTBody');
+  let itemCardapioTr = `<tr>
+    <th scope="row">1</th>
+    <td>${itemCardapio.nome}</td>
+    <td>${itemCardapio.preco}</td>
+    <td>${itemCardapio.descricao}</td>
+  </tr>`;
 
-    let itemCardapioTr = `<tr>
-        <td scope = "row">1</td>
-        <td>${itemCardapio.nome}</td>
-        <td>${itemCardapio.preco}</td>
-        <td>${itemCardapio.descricao}</td>
-    </tr>`;
-
-    itemCardapioTbody.insertAdjacentHTML('beforeend', itemCardapioTr);
+  itensCardapioTBody.insertAdjacentHTML('beforeend', itemCardapioTr);
 };
 
-let itemCardapio = JSON.parse(localStorage.getItem('itemCardapio'));
+const carregarTabela = () => {
+  let itensCardapio = JSON.parse(localStorage.getItem('itensCardapio')) ?? [];
 
-for (let itemCardapio of itensCardapio) {
+  for (let itemCardapio of itensCardapio) {
     addItemCardapioTable(itemCardapio);
+  }
 };
 
-const setFormValues = (nome = " ", descricao = " ", preco = " ") => {
-    const myname = document.querySelector("nome");
-    const mydecs = document.querySelector("descricao");
-    const myprec = document.querySelector("preco");
+const setPreparacaoFormValues = (nome = '', descricao = '', preco = '') => {
+  const nomeInput = document.querySelector('#nome');
+  const descricaoInput = document.querySelector('#descricao');
+  const precoInput = document.querySelector('#preco');
 
-    myname.value = nome;
-    mydecs.value = descricao;
-    myprec.value = preco;
-
+  nomeInput.value = nome;
+  descricaoInput.value = descricao;
+  precoInput.value = preco;
 };
 
 const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("cadastrado");
+  event.preventDefault();
+    
+  let cardapioForm = document.getElementById('itemCadastrarForm');
+  // cardapioForm = event.target;
+  let cardapioFormData = new FormData(cardapioForm);
+  let itemCardapio = Object.fromEntries(cardapioFormData);
 
-    let cardapioForm = document.getElementById("itemCadastro");
+  itensCardapio.push(itemCardapio);
+  localStorage.setItem('itensCardapio', JSON.stringify(itensCardapio));
 
-    let cardapioFormData = new FormData(cardapioForm);
+  addItemCardapioTable(itemCardapio);
 
-    let itemCardapio = Object.fromEntries(cardapioFormData);
+  cardapioForm.reset();
+  setPreparacaoFormValues();
 
-    itensCardapio.push(itemCardapio);
+  $('#cardapioModal').modal('toggle');
 
-    localStorage.setItem("itemCardapio", JSON.stringify(itensCardapio));
-
-    cardapioForm.reset();
-    setFormValues();
-
-    //$('#cardapioModal').modal('toggle')
-
+  Toastify({
+    text: 'Item do cardápio adicionado com sucesso!',
+    duration: 3000, // Duration in milliseconds (3 seconds)
+  }).showToast();
 };
 
-let itemCadastro = document.getElementById("itemCadastro");
-itemCadastro.onsubmit = handleSubmit;
+let itemCadastrarForm = document.getElementById('itemCadastrarForm');
+itemCadastrarForm.onsubmit = handleSubmit;
+// itemCadastrarForm.addEventListener('submit', handleSubmit);
 
-//localStorage.setItem()
-//localStorage.getItem()
-//localStorage.remopveItem()
-//localStorage.clear()
-
-//JSON.parse()
-//JSON.stringfy()
-
-
-//let nomeInput = document.getElementById("nome");
-//let nome = nomeInput.value;
-
-//let precoInput = document.getElementById("preco");
-//let preco = precoInput.value;
-
-//let descricaoInput = document.getElementById("descricao");
-//let descricao = descricaoInput.value;
+let body = document.body;
+body.onload = carregarTabela;
